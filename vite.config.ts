@@ -5,54 +5,68 @@ import path from "path";
 import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
-export default defineConfig(({ mode }) => ({
-  // Server config only applies in development
-  server: {
-    host: "0.0.0.0",
-    port: 8080,
-    hmr: {
-      port: 8080,
-      host: "localhost",
-    },
-  },
+export default defineConfig(({ mode }) => {
+  const isDev = mode === 'development';
   
-  // Build configuration for production
-  build: {
-    outDir: "dist",
-    assetsDir: "assets",
-    sourcemap: false, // Disable sourcemaps in production for security
-    minify: "esbuild",
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          vendor: ['react', 'react-dom'],
-          ui: ['@radix-ui/react-dialog', '@radix-ui/react-dropdown-menu']
+  return {
+    // Server config only applies in development
+    server: isDev ? {
+      host: "0.0.0.0",
+      port: 8080,
+      hmr: {
+        port: 8080,
+        host: "0.0.0.0",
+        protocol: 'ws'
+      },
+      strictPort: false,
+      cors: true
+    } : {},
+    
+    // Build configuration for production
+    build: {
+      outDir: "dist",
+      assetsDir: "assets",
+      sourcemap: false, // Disable sourcemaps in production for security
+      minify: "esbuild",
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            vendor: ['react', 'react-dom'],
+            ui: ['@radix-ui/react-dialog', '@radix-ui/react-dropdown-menu']
+          }
         }
       }
-    }
-  },
-  
-  // Only include development plugins in development mode
-  plugins: [
-    react(),
-    // Only include componentTagger in development
-    ...(mode === 'development' ? [componentTagger()] : [])
-  ],
-  
-  resolve: {
-    alias: {
-      "@": path.resolve(__dirname, "./src"),
     },
-  },
-  
-  // Ensure no dev dependencies leak into production
-  define: {
-    __DEV__: JSON.stringify(mode === 'development'),
-  },
-  
-  // Preview server config for production testing
-  preview: {
-    port: 4173,
-    host: "0.0.0.0",
-  },
-}));
+    
+    // Only include development plugins in development mode
+    plugins: [
+      react(),
+      // Only include componentTagger in development
+      ...(isDev ? [componentTagger()] : [])
+    ],
+    
+    resolve: {
+      alias: {
+        "@": path.resolve(__dirname, "./src"),
+      },
+    },
+    
+    // Ensure no dev dependencies leak into production
+    define: {
+      __DEV__: JSON.stringify(isDev),
+      // Explicitly define WebSocket token for development
+      ...(isDev ? {} : {
+        'process.env.NODE_ENV': '"production"'
+      })
+    },
+    
+    // Preview server config for production testing
+    preview: {
+      port: 4173,
+      host: "0.0.0.0",
+    },
+    
+    // Ensure proper environment handling
+    clearScreen: false,
+  };
+});
