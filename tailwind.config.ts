@@ -1,5 +1,7 @@
 
 import type { Config } from "tailwindcss";
+import typography from "@tailwindcss/typography";
+import tailwindcssAnimate from "tailwindcss-animate";
 
 export default {
 	darkMode: ["class"],
@@ -19,11 +21,11 @@ export default {
 			}
 		},
 		extend: {
-			fontFamily: {
-				sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
-				heading: ['Space Grotesk', 'system-ui', 'sans-serif'],
-				mono: ['JetBrains Mono', 'Fira Code', 'Monaco', 'Consolas', 'monospace'],
-			},
+                        fontFamily: {
+                                sans: ['Tajawal', 'Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
+                                heading: ['Space Grotesk', 'Tajawal', 'system-ui', 'sans-serif'],
+                                mono: ['JetBrains Mono', 'Fira Code', 'Monaco', 'Consolas', 'monospace'],
+                        },
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -221,8 +223,5 @@ export default {
 			},
 		}
 	},
-	plugins: [
-		require("tailwindcss-animate"),
-		require("@tailwindcss/typography"),
-	],
+       plugins: [tailwindcssAnimate, typography],
 } satisfies Config;
