@@ -62,7 +62,7 @@ const Services: React.FC = () => {
       scale: 1,
       transition: {
         duration: 0.8,
-        ease: [0.42, 0, 0.58, 1],
+        ease: "easeInOut",
       },
     },
   };
@@ -74,7 +74,7 @@ const Services: React.FC = () => {
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.8, ease: [0.42, 0, 0.58, 1] }}
+          transition={{ duration: 0.8, ease: "easeInOut" }}
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
@@ -101,7 +101,7 @@ const Services: React.FC = () => {
                 whileHover={{ 
                   y: -8, 
                   scale: 1.02,
-                  transition: { duration: 0.3, ease: [0.42, 0, 0.58, 1] }
+                  transition: { duration: 0.3, ease: "easeInOut" }
                 }}
                 className="group"
               >

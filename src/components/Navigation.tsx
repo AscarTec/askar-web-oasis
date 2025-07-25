@@ -38,11 +38,11 @@ const Navigation: React.FC = () => {
   const { theme, toggleTheme } = useTheme();
 
   const navItems = useMemo(() => [
-    { key: "home", href: "#hero" },
-    { key: "services", href: "#services" },
-    { key: "about", href: "#about" },
-    { key: "projects", href: "#projects" },
-    { key: "contact", href: "#contact" },
+    { key: "home" as const, href: "#hero" },
+    { key: "services" as const, href: "#services" },
+    { key: "about" as const, href: "#about" },
+    { key: "projects" as const, href: "#projects" },
+    { key: "contact" as const, href: "#contact" },
   ], []);
 
   const activeId = useScrollSpy([
@@ -88,7 +88,7 @@ const Navigation: React.FC = () => {
       scale: 1,
       transition: { 
         duration: 0.3, 
-        ease: [0.42, 0, 0.58, 1] 
+        ease: "easeInOut" 
       }
     },
     exit: { 
@@ -96,7 +96,7 @@ const Navigation: React.FC = () => {
       scale: 0.95,
       transition: { 
         duration: 0.2, 
-        ease: [0.42, 0, 0.58, 1] 
+        ease: "easeInOut" 
       }
     }
   };
@@ -139,7 +139,7 @@ const Navigation: React.FC = () => {
                   <motion.div
                     layoutId="activeIndicator"
                     className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary"
-                    transition={{ duration: 0.3, ease: [0.42, 0, 0.58, 1] }}
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
                   />
                 )}
               </motion.button>
@@ -208,7 +208,7 @@ const Navigation: React.FC = () => {
                       transition: { 
                         delay: index * 0.1,
                         duration: 0.3,
-                        ease: [0.42, 0, 0.58, 1]
+                        ease: "easeInOut"
                       }
                     }}
                     className={`

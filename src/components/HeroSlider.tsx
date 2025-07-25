@@ -108,14 +108,14 @@ const HeroSlider: React.FC = () => {
       opacity: 1,
       transition: {
         duration: SLIDE_DURATION / 1000,
-        ease: [0.42, 0, 0.58, 1],
+        ease: "easeInOut",
       },
     },
     exit: {
       opacity: 0,
       transition: {
         duration: 1,
-        ease: [0.42, 0, 0.58, 1],
+        ease: "easeInOut",
       },
     },
   };
@@ -132,7 +132,7 @@ const HeroSlider: React.FC = () => {
       filter: 'blur(0px)',
       transition: {
         duration: 1.2,
-        ease: [0.42, 0, 0.58, 1],
+        ease: "easeInOut",
       },
     },
     exit: {
@@ -141,7 +141,7 @@ const HeroSlider: React.FC = () => {
       filter: 'blur(8px)',
       transition: {
         duration: 1,
-        ease: [0.42, 0, 0.58, 1],
+        ease: "easeInOut",
       },
     },
   };
