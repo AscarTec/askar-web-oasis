@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState, useCallback, useMemo } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, easeInOut } from 'framer-motion';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { OptimizedImage } from '@/components/ui/optimized-image';
 import { cn } from '@/lib/utils';
@@ -108,14 +108,14 @@ const HeroSlider: React.FC = () => {
       opacity: 1,
       transition: {
         duration: SLIDE_DURATION / 1000,
-        ease: "easeInOut",
+        ease: easeInOut,
       },
     },
     exit: {
       opacity: 0,
       transition: {
         duration: 1,
-        ease: "easeInOut",
+        ease: easeInOut,
       },
     },
   };
@@ -132,7 +132,7 @@ const HeroSlider: React.FC = () => {
       filter: 'blur(0px)',
       transition: {
         duration: 1.2,
-        ease: "easeInOut",
+        ease: easeInOut,
       },
     },
     exit: {
@@ -141,7 +141,7 @@ const HeroSlider: React.FC = () => {
       filter: 'blur(8px)',
       transition: {
         duration: 1,
-        ease: "easeInOut",
+        ease: easeInOut,
       },
     },
   };

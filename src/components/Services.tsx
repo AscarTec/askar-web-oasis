@@ -3,7 +3,7 @@ import React from 'react';
 import { Code, Smartphone, Cloud, Users } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { motion } from 'framer-motion';
+import { motion, easeInOut } from 'framer-motion';
 
 const Services: React.FC = () => {
   const { t } = useLanguage();
@@ -62,7 +62,7 @@ const Services: React.FC = () => {
       scale: 1,
       transition: {
         duration: 0.8,
-        ease: "easeInOut",
+        ease: easeInOut,
       },
     },
   };
@@ -74,7 +74,7 @@ const Services: React.FC = () => {
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.8, ease: "easeInOut" }}
+          transition={{ duration: 0.8, ease: easeInOut }}
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
@@ -101,7 +101,7 @@ const Services: React.FC = () => {
                 whileHover={{ 
                   y: -8, 
                   scale: 1.02,
-                  transition: { duration: 0.3, ease: "easeInOut" }
+                  transition: { duration: 0.3, ease: easeInOut }
                 }}
                 className="group"
               >
