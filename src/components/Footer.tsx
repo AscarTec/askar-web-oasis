@@ -14,10 +14,10 @@ const Footer = () => {
   ];
 
   const quickLinks = [
-    { key: 'home', href: 'hero' },
-    { key: 'services', href: 'services' },
-    { key: 'about', href: 'about' },
-    { key: 'contact', href: 'contact' }
+    { key: 'home' as const, href: 'hero' },
+    { key: 'services' as const, href: 'services' },
+    { key: 'about' as const, href: 'about' },
+    { key: 'contact' as const, href: 'contact' }
   ];
 
   return (

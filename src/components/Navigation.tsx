@@ -87,16 +87,16 @@ const Navigation: React.FC = () => {
       opacity: 1, 
       scale: 1,
       transition: { 
-        duration: 0.3, 
-        ease: "easeOut" 
+        duration: 0.3,
+        ease: "easeOut"
       }
     },
     exit: { 
       opacity: 0, 
       scale: 0.95,
       transition: { 
-        duration: 0.2, 
-        ease: "easeInOut" 
+        duration: 0.2,
+        ease: "easeInOut"
       }
     }
   };
