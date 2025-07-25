@@ -1,16 +1,19 @@
 
 import React, { useEffect, useState, useCallback, useMemo } from 'react';
-import { motion, AnimatePresence, easeInOut } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { OptimizedImage } from '@/components/ui/optimized-image';
 import { cn } from '@/lib/utils';
 
 const NAVBAR_HEIGHT = 64;
-const SLIDE_DURATION = 8000; // 8 seconds
-const TEXT_APPEAR_AFTER = 4000; // Text appears after 4 seconds
+const SLIDE_DURATION = 10000; // 10 seconds as requested
+const TEXT_APPEAR_AFTER = 6000; // Text appears after 6 seconds (last 4 seconds)
 const MOBILE_MIN_HEIGHT = 500;
 
-// Slide data with better typing
+// Proper easing functions
+const CINEMATIC_EASING = [0.42, 0, 0.58, 1]; // Custom cubic bezier
+const SMOOTH_EASING = [0.25, 0.1, 0.25, 1]; // Smooth transitions
+
 interface SlideData {
   image: string;
   text: {
@@ -24,25 +27,25 @@ const slides: SlideData[] = [
   { 
     image: '/hero1.png', 
     text: { 
-      en: 'Technology that leads.', 
-      ar: 'تقنية تقود.', 
-      eg: 'تقنية تقود.' 
+      en: 'Technology that leads the future.', 
+      ar: 'تقنية تقود المستقبل.', 
+      eg: 'تقنية تقود المستقبل.' 
     } 
   },
   { 
     image: '/hero2.png', 
     text: { 
       en: 'Data flows, growth follows.', 
-      ar: 'تدفق البيانات... ينمو.', 
-      eg: 'البيانات تتدفق... والنمو يتبع.' 
+      ar: 'تدفق البيانات، ينمو النجاح.', 
+      eg: 'البيانات تتدفق، والنمو يتبع.' 
     } 
   },
   { 
     image: '/hero3.png', 
     text: { 
       en: 'Smart partner in transformation.', 
-      ar: 'شريك ذكي للتحول.', 
-      eg: 'شريك ذكي للتحول.' 
+      ar: 'شريك ذكي في التحول.', 
+      eg: 'شريك ذكي في التحول.' 
     } 
   },
   { 
@@ -68,7 +71,6 @@ const HeroSlider: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showText, setShowText] = useState(false);
 
-  // Memoize current slide to prevent unnecessary re-renders
   const currentSlide = useMemo(() => slides[currentIndex], [currentIndex]);
   
   // Determine text position based on slide index and RTL
@@ -87,7 +89,7 @@ const HeroSlider: React.FC = () => {
     setShowText(false);
     
     const textTimer = setTimeout(() => setShowText(true), TEXT_APPEAR_AFTER);
-    const hideTextTimer = setTimeout(() => setShowText(false), SLIDE_DURATION - 500);
+    const hideTextTimer = setTimeout(() => setShowText(false), SLIDE_DURATION - 800);
     const slideTimer = setTimeout(nextSlide, SLIDE_DURATION);
 
     return () => {
@@ -97,51 +99,53 @@ const HeroSlider: React.FC = () => {
     };
   }, [currentIndex, nextSlide]);
 
-  // Improved animation variants with proper easing
+  // Cinematic image animation variants
   const imageVariants = {
     enter: {
       scale: 1,
       opacity: 0,
     },
     animate: {
-      scale: 1.08,
+      scale: 1.08, // Cinematic zoom-in
       opacity: 1,
       transition: {
-        duration: SLIDE_DURATION / 1000,
-        ease: easeInOut,
+        duration: SLIDE_DURATION / 1000, // 10 seconds
+        ease: CINEMATIC_EASING,
       },
     },
     exit: {
       opacity: 0,
+      scale: 1.08, // Maintain scale during exit
       transition: {
-        duration: 1,
-        ease: easeInOut,
+        duration: 0.8,
+        ease: SMOOTH_EASING,
       },
     },
   };
 
+  // Text animation variants
   const textVariants = {
     enter: {
       opacity: 0,
-      x: textPosition === 'left' ? -80 : 80,
-      filter: 'blur(8px)',
+      x: textPosition === 'left' ? -100 : 100,
+      filter: 'blur(10px)',
     },
     animate: {
       opacity: 1,
       x: 0,
       filter: 'blur(0px)',
       transition: {
-        duration: 1.2,
-        ease: easeInOut,
+        duration: 0.8,
+        ease: SMOOTH_EASING,
       },
     },
     exit: {
       opacity: 0,
-      x: textPosition === 'left' ? 80 : -80,
-      filter: 'blur(8px)',
+      x: textPosition === 'left' ? 100 : -100,
+      filter: 'blur(10px)',
       transition: {
-        duration: 1,
-        ease: easeInOut,
+        duration: 0.6,
+        ease: SMOOTH_EASING,
       },
     },
   };
@@ -155,7 +159,7 @@ const HeroSlider: React.FC = () => {
         minHeight: `calc(100vh - ${NAVBAR_HEIGHT}px)`,
       }}
     >
-      {/* Image Container */}
+      {/* Image Container - Absolute coverage */}
       <div className="absolute inset-0 w-full h-full">
         <AnimatePresence mode="wait">
           <motion.div
@@ -178,10 +182,10 @@ const HeroSlider: React.FC = () => {
         </AnimatePresence>
         
         {/* Enhanced gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/20 to-black/60" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/70" />
       </div>
 
-      {/* Text Overlay */}
+      {/* Text Overlay - Only show in last 4 seconds */}
       <AnimatePresence>
         {showText && (
           <motion.div
@@ -209,8 +213,8 @@ const HeroSlider: React.FC = () => {
                 {currentSlide.text[language]}
               </h2>
               
-              {/* Background blur effect */}
-              <div className="absolute inset-0 -z-10 bg-black/20 backdrop-blur-sm rounded-2xl border border-white/10" />
+              {/* Glass background highlight */}
+              <div className="absolute inset-0 -z-10 bg-black/30 backdrop-blur-md rounded-2xl border border-white/20" />
             </div>
           </motion.div>
         )}

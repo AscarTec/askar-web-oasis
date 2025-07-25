@@ -7,9 +7,12 @@ import type { Language } from "@/contexts/LanguageContext";
 import { useTheme } from "@/contexts/ThemeContext";
 import { Logo } from "@/components/ui/logo";
 import { useScrollSpy } from "@/hooks/useScrollSpy";
-import { motion, AnimatePresence, easeInOut } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 const NAVBAR_HEIGHT = 64;
+
+// Proper easing functions
+const SMOOTH_EASING = [0.25, 0.1, 0.25, 1];
 
 // Smooth scroll utility with better easing
 const easeInOutQuart = (t: number) =>
@@ -88,7 +91,7 @@ const Navigation: React.FC = () => {
       scale: 1,
       transition: { 
         duration: 0.3, 
-        ease: easeInOut 
+        ease: SMOOTH_EASING 
       }
     },
     exit: { 
@@ -96,7 +99,7 @@ const Navigation: React.FC = () => {
       scale: 0.95,
       transition: { 
         duration: 0.2, 
-        ease: easeInOut 
+        ease: SMOOTH_EASING 
       }
     }
   };
@@ -139,7 +142,7 @@ const Navigation: React.FC = () => {
                   <motion.div
                     layoutId="activeIndicator"
                     className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary"
-                    transition={{ duration: 0.3, ease: easeInOut }}
+                    transition={{ duration: 0.3, ease: SMOOTH_EASING }}
                   />
                 )}
               </motion.button>
@@ -208,7 +211,7 @@ const Navigation: React.FC = () => {
                       transition: { 
                         delay: index * 0.1,
                         duration: 0.3,
-                        ease: easeInOut
+                        ease: SMOOTH_EASING
                       }
                     }}
                     className={`

@@ -25,6 +25,18 @@ export const ar = {
   consulting: 'استشارات تقنية',
   consultingDesc: 'استشارات تقنية استراتيجية لتحسين العمليات التجارية',
 
+  // Enhanced Services
+  digitalInfrastructure: 'البنية التحتية الرقمية',
+  digitalInfrastructureDesc: 'حلول استضافة سحابية قوية وخدمات مُدارة وبنية تحتية على مستوى المؤسسات',
+  aiCreativeProduction: 'الإنتاج الإبداعي المدعوم بالذكاء الاصطناعي',
+  aiCreativeProductionDesc: 'إنشاء محتوى ذكي وسير عمل إبداعي آلي باستخدام أحدث تقنيات الذكاء الاصطناعي',
+  virtualTours: 'جولات ماترپورت الافتراضية',
+  virtualToursDesc: 'جولات افتراضية ثلاثية الأبعاد غامرة وتجارب مكانية تفاعلية للشركات',
+  ordermeplatform: 'منصة OrdarMe',
+  ordermeplatformDesc: 'منصة تجارة إلكترونية اجتماعية متكاملة تربط الشركات بالعملاء',
+  fortemonBranding: 'تصميم علامة Fortemont التجارية',
+  fortemonBrandingDesc: 'خدمات العلامة التجارية المهنية والهوية المؤسسية وتصميم الويب المذهل',
+
   // Projects
   projectsTitle: 'مشاريعنا',
   projectsSubtitle: 'نستعرض أحدث قصص النجاح لعملائنا',
@@ -65,6 +77,14 @@ export const ar = {
   close: 'إغلاق',
   open: 'فتح',
   menu: 'القائمة',
+  
+  // Enhanced CTAs
+  requestDemo: 'طلب عرض تجريبي',
+  bookTour: 'احجز جولة افتراضية',
+  startProject: 'ابدأ مشروعك',
+  joinPartners: 'انضم إلى شركائنا',
+  exploreSolutions: 'استكشف الحلول',
+  contactSales: 'تواصل مع المبيعات',
   
   // Meta
   siteTitle: 'أسكر للحلول البرمجية - شريك التكنولوجيا المبتكر',
