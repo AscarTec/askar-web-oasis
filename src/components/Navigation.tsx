@@ -11,9 +11,6 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const NAVBAR_HEIGHT = 64;
 
-// Proper easing functions
-const SMOOTH_EASING = [0.25, 0.1, 0.25, 1];
-
 // Smooth scroll utility with better easing
 const easeInOutQuart = (t: number) =>
   t < 0.5 ? 8 * t * t * t * t : 1 - Math.pow(-2 * t + 2, 4) / 2;
@@ -91,7 +88,7 @@ const Navigation: React.FC = () => {
       scale: 1,
       transition: { 
         duration: 0.3, 
-        ease: SMOOTH_EASING 
+        ease: "easeOut" 
       }
     },
     exit: { 
@@ -99,7 +96,7 @@ const Navigation: React.FC = () => {
       scale: 0.95,
       transition: { 
         duration: 0.2, 
-        ease: SMOOTH_EASING 
+        ease: "easeInOut" 
       }
     }
   };
@@ -142,7 +139,7 @@ const Navigation: React.FC = () => {
                   <motion.div
                     layoutId="activeIndicator"
                     className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary"
-                    transition={{ duration: 0.3, ease: SMOOTH_EASING }}
+                    transition={{ duration: 0.3, ease: "easeOut" }}
                   />
                 )}
               </motion.button>
@@ -211,7 +208,7 @@ const Navigation: React.FC = () => {
                       transition: { 
                         delay: index * 0.1,
                         duration: 0.3,
-                        ease: SMOOTH_EASING
+                        ease: "easeOut"
                       }
                     }}
                     className={`

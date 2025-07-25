@@ -5,9 +5,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { useLanguage } from '@/contexts/LanguageContext';
 import { motion } from 'framer-motion';
 
-// Proper easing functions
-const SMOOTH_EASING = [0.25, 0.1, 0.25, 1];
-
 const Services: React.FC = () => {
   const { t } = useLanguage();
 
@@ -65,7 +62,7 @@ const Services: React.FC = () => {
       scale: 1,
       transition: {
         duration: 0.8,
-        ease: SMOOTH_EASING,
+        ease: "easeOut",
       },
     },
   };
@@ -77,7 +74,7 @@ const Services: React.FC = () => {
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.8, ease: SMOOTH_EASING }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
@@ -104,7 +101,7 @@ const Services: React.FC = () => {
                 whileHover={{ 
                   y: -8, 
                   scale: 1.02,
-                  transition: { duration: 0.3, ease: SMOOTH_EASING }
+                  transition: { duration: 0.3, ease: "easeOut" }
                 }}
                 className="group"
               >

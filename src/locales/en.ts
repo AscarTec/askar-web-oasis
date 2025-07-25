@@ -69,6 +69,7 @@ export const en = {
   // Footer
   allRightsReserved: 'All rights reserved.',
   followUs: 'Follow Us',
+  quickLinks: 'Quick Links',
   
   // Common
   loading: 'Loading...',

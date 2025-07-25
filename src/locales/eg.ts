@@ -69,6 +69,7 @@ export const eg = {
   // Footer
   allRightsReserved: 'كل الحقوق محفوظة.',
   followUs: 'تابعنا',
+  quickLinks: 'لينكات سريعة',
   
   // Common
   loading: 'بيحمل...',

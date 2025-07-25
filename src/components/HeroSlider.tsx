@@ -10,10 +10,6 @@ const SLIDE_DURATION = 10000; // 10 seconds as requested
 const TEXT_APPEAR_AFTER = 6000; // Text appears after 6 seconds (last 4 seconds)
 const MOBILE_MIN_HEIGHT = 500;
 
-// Proper easing functions
-const CINEMATIC_EASING = [0.42, 0, 0.58, 1]; // Custom cubic bezier
-const SMOOTH_EASING = [0.25, 0.1, 0.25, 1]; // Smooth transitions
-
 interface SlideData {
   image: string;
   text: {
@@ -110,7 +106,7 @@ const HeroSlider: React.FC = () => {
       opacity: 1,
       transition: {
         duration: SLIDE_DURATION / 1000, // 10 seconds
-        ease: CINEMATIC_EASING,
+        ease: "easeOut",
       },
     },
     exit: {
@@ -118,7 +114,7 @@ const HeroSlider: React.FC = () => {
       scale: 1.08, // Maintain scale during exit
       transition: {
         duration: 0.8,
-        ease: SMOOTH_EASING,
+        ease: "easeInOut",
       },
     },
   };
@@ -136,7 +132,7 @@ const HeroSlider: React.FC = () => {
       filter: 'blur(0px)',
       transition: {
         duration: 0.8,
-        ease: SMOOTH_EASING,
+        ease: "easeOut",
       },
     },
     exit: {
@@ -145,7 +141,7 @@ const HeroSlider: React.FC = () => {
       filter: 'blur(10px)',
       transition: {
         duration: 0.6,
-        ease: SMOOTH_EASING,
+        ease: "easeInOut",
       },
     },
   };
