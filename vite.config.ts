@@ -11,11 +11,11 @@ export default defineConfig(({ mode }) => {
   return {
     // Server config only applies in development
     server: isDev ? {
-      host: "0.0.0.0",
-      port: 8080,
+        host: "localhost", // أو "127.0.0.1"
+  port: 8080,
       hmr: {
         port: 8080,
-        host: "0.0.0.0",
+        host: "localhost",
         protocol: 'ws'
       },
       strictPort: false,
